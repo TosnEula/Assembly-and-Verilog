@@ -1,0 +1,13 @@
+module PosEdge_DFF_AsyncReset(Din, clk, reset, Q);
+input Din; //Data input signal
+input clk; //clock input
+input reset; //asynchronous reset high level - high priority
+output reg Q; //output Q
+always @(posedge clk or posedge reset)
+begin
+ if(reset==1'b1) //binary of vector one
+ Q <= 1'b0;
+ else
+ Q <= Din;
+end
+endmodule

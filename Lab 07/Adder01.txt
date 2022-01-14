@@ -1,0 +1,15 @@
+library ieee; --Pre processor directives
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_arith.all;
+
+entity halfadder is --Defines the variables and return values
+port(x,y:in bit; co,sum:out bit);
+end halfadder;
+
+architecture simple of halfadder is --how the entity behaves
+begin
+	sum <= (x xor y);
+	co <= (x and y);	
+end simple;
+

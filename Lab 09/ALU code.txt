@@ -1,0 +1,34 @@
+//ALU - Arithmetic Logic Unit similar to covered in theory
+
+module CA_alu_fa21(
+	input [3:0] A,B, //Inputs 4 bits
+	input [2:0] ALU_Sel, //Select lines 3
+	output [7:0] ALU_Output //8-bit Output
+);
+reg[7:0] ALU_result;
+assign ALU_Output = ALU_result; //ALU out
+
+always @(*)
+begin
+	case(ALU_Sel)
+	3'b000: //Addition
+	 ALU_result = A+B;
+	3'b001: //Substraction
+	 ALU_result = A-B;
+	3'b010: //Multiplication
+	 ALU_result = A*B;
+	3'b011: //OR
+	 ALU_result = A | B;
+	3'b100: //AND
+	 ALU_result = A & B;
+	3'b101: //XOR
+	 ALU_result = A ^ B;
+	3'b110: //Equal
+	 ALU_result = (A==B)?8'd1:8'd0;
+	3'b111: //Greater than
+	 ALU_result = (A>B)?8'd1:8'd0;
+	default: ALU_result = 8'b0;
+
+	endcase
+end
+endmodule
